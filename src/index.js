@@ -1,92 +1,43 @@
-// ================================
-// Discord Music Bot for Render
-// ================================
-import express from "express";
-import dotenv from "dotenv";
-import { Client, GatewayIntentBits } from "discord.js";
-import { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerStatus, getVoiceConnection } from "@discordjs/voice";
-import play from "play-dl";
+// src/index.js
 
-dotenv.config();
+require('dotenv').config(); // Nạp biến môi trường
+const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const fs = require('node:fs');
+const path = require('node:path');
 
-const app = express();
-app.get("/", (_, res) => res.send("🎵 Bot đang hoạt động!"));
-app.listen(10000, () => console.log("🌐 Web server on port 10000"));
-
-// -------------------------------
-// Discord Bot Init
-// -------------------------------
+// Khởi tạo Client với các quyền (Intents) cần thiết
+// Guilds: Quyền cơ bản để bot hoạt động trong server
+// GuildMessages: Quyền đọc tin nhắn (cần nếu dùng prefix cũ, slash command thì ít cần hơn)
+// MessageContent: Quyền đọc nội dung tin nhắn (cần bật trong Developer Portal)
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
-    GatewayIntentBits.GuildVoiceStates,
-  ],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers // Cần cho tính năng Welcome
+    ]
 });
 
-let player = createAudioPlayer();
-let currentConnection = null;
-let currentResource = null;
+// Tạo một Collection để chứa các lệnh
+client.commands = new Collection();
 
-// -------------------------------
-// Helper: Play music
-// -------------------------------
-async function playMusic(message, url) {
-  const channel = message.member?.voice?.channel;
-  if (!channel) return message.reply("⚠️ Bạn cần vào kênh thoại trước!");
+// --- ĐOẠN CODE NÀY SẼ ĐƯỢC MỞ RỘNG Ở BƯỚC SAU ---
+// Chúng ta sẽ viết logic để tự động đọc file trong folder 'commands'
+// và 'events' tại đây. Tạm thời để trống để đảm bảo bot chạy được đã.
 
-  try {
-    const yt_info = await play.video_info(url);
-    const stream = await play.stream_from_info(yt_info);
-    currentResource = createAudioResource(stream.stream, { inputType: stream.type });
-
-    // Join VC nếu chưa có
-    currentConnection = joinVoiceChannel({
-      channelId: channel.id,
-      guildId: message.guild.id,
-      adapterCreator: message.guild.voiceAdapterCreator,
-    });
-
-    player.play(currentResource);
-    currentConnection.subscribe(player);
-
-    message.reply(`🎶 Đang phát: **${yt_info.video_details.title}**`);
-  } catch (err) {
-    console.error(err);
-    message.reply("❌ Không thể phát link này!");
-  }
-}
-
-// -------------------------------
-// Commands
-// -------------------------------
-client.on("messageCreate", async (msg) => {
-  if (!msg.content.startsWith("!")) return;
-  const [cmd, ...args] = msg.content.trim().split(" ");
-
-  switch (cmd) {
-    case "!play":
-      if (!args.length) return msg.reply("❗ Dán link YouTube sau `!play`");
-      return await playMusic(msg, args[0]);
-
-    case "!pause":
-      player.pause();
-      return msg.reply("⏸️ Đã tạm dừng nhạc!");
-
-    case "!resume":
-      player.unpause();
-      return msg.reply("▶️ Tiếp tục phát!");
-
-    case "!stop":
-      player.stop();
-      if (currentConnection) currentConnection.destroy();
-      return msg.reply("🛑 Đã dừng và rời kênh thoại!");
-  }
+client.once('ready', () => {
+    console.log(`✅ Bot đã online! Đăng nhập dưới tên: ${client.user.tag}`);
+    client.user.setActivity('đang phục vụ Server riêng');
 });
 
-// -------------------------------
-// Discord Login
-// -------------------------------
-client.once("ready", () => console.log(`✅ Logged in as ${client.user.tag}`));
-client.login(process.env.TOKEN);
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isChatInputCommand()) return;
+
+    // Xử lý phản hồi tạm thời để test bot
+    if (interaction.commandName === 'ping') {
+        await interaction.reply('Pong! Bot đang hoạt động tốt.');
+    }
+});
+
+// Đăng nhập bot
+client.login(process.env.DISCORD_TOKEN);
