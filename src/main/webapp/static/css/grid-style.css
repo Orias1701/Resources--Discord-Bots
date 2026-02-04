@@ -1,0 +1,109 @@
+/* ===================== TABLE LAYOUT ===================== */
+.data-container.grid-lyo {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* ===================== DATA ITEM ===================== */
+
+.grid-lyo .data-item {
+    font-size: 16px;
+    color: var(--primary-color);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    height: max-content;
+    padding: 30px 40px;
+    border: 1px solid var(--primary-color);
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    gap: 8px;
+}
+
+.grid-lyo .data-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* .grid-lyo .item-actions {
+    height: 0;
+} */
+
+.grid-lyo .item-actions a:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 5;
+}
+
+.data-item .data-header,
+.data-item .data-data {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+}
+
+.data-item .data-header{
+    font-weight: 600;
+    opacity: 70%;
+    grid-column: span 3;
+}
+
+.data-item .data-data {
+    font-weight: 500;
+    grid-column: span 4;
+}
+
+.data-data div,
+.data-header div {
+    display: flex;
+    align-items: center;
+    height: 22px;
+}
+
+/* Nút xóa */
+.grid-lyo .item-actions a:last-child {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 6;
+    opacity: 1;
+    color: var(--primary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.15);
+    background: #ffffff;
+    transition: background 0.3s;
+}
+
+.grid-lyo .item-actions a:last-child:hover {
+    background: #ffd7b171;
+    box-shadow: 0 0 6px rgba(0,0,0,0.15);
+}
+
+/* Ẩn cột cuối trong header */
+.data-header > div:last-child {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow: hidden;
+}
+
+/* Ẩn cột cuối trong data */
+.data-data > .data-cell:last-child,
+.data-data > .item-actions:last-child {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow: hidden;
+}

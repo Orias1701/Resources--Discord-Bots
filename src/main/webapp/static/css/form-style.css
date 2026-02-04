@@ -1,0 +1,176 @@
+
+#formOverlay {
+    display: none;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 0.3s ease;
+}
+
+/* Khi active -> nền mờ dần */
+#formOverlay.active {
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* FORM CONTAINER */
+#formContainer {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px #5B4A3F;
+    width: 40vw;
+    min-width: 600px;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    transform: translateY(100vh) scale(0.2);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Khi active -> về trạng thái bình thường */
+#formOverlay.active #formContainer {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+#formContainer .close-btn {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+    font-size: 22px;
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+    border-radius: 100%;
+    margin-right: 0;
+}
+
+#formContainer .close-btn i{
+    margin: auto;
+}
+
+/* Fix size */
+#formContent {
+    height: max-content;
+    margin-top: -40px;
+}
+
+.popup-container {
+    height: max-content;
+}
+
+/* Main Form */
+.popup-container main.app-main-content{
+    width: 100%;
+    height: max-content;
+    padding: calc(var(--screen-w) * 0.02) calc(var(--screen-w) * 0.04);
+}
+
+.form-container h2 {
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.form-container form{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 14px;
+    color: var(--primary-color);
+    align-items: center;
+}
+
+.form-container form .form-group{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 7px;
+}
+
+.form-group label {
+    grid-column: span 2;
+    font-weight: 600;
+    opacity: 70%;
+}
+
+.form-group input,
+.form-group select {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    grid-column: span 3;
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.form-group select {
+    appearance: none; 
+    -moz-appearance: none;
+    background-position: right 14px center;
+    background-size: 16px;
+    background-color: #ffffff;
+    z-index: 2002;
+}
+
+.form-group select option {
+    background-color: #fff;
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.form-actions .btn-primary,
+.form-actions .btn-secondary,
+.form-actions a,
+.form-actions button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 120px;
+    padding: 10px 20px;
+
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+
+    border-radius: 8px;
+    border: 1px solid transparent;
+
+    transition: all 0.2s ease;
+}
+
+/* Nút chính */
+.form-actions .btn-primary {
+    background: var(--primary-color, #6b4d38);
+    color: #fff;
+    border-color: var(--primary-color, #6b4d38);
+}
+.form-actions .btn-primary:hover {
+    opacity: 0.7;
+}
+
+/* Nút phụ */
+.form-actions .btn-secondary {
+    background: #fff;
+    color: var(--primary-color, #6b4d38);
+    border: 1px solid var(--primary-color, #6b4d38);
+}
+
+.form-actions .btn-secondary:hover {
+    opacity: 0.7;
+}

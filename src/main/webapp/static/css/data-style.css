@@ -1,0 +1,112 @@
+/* ===================== TABLE LAYOUT ===================== */
+.data-container.table-lyo {
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+/* ===================== DATA HEADER ===================== */
+.table-lyo .data-header {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-color);
+    height: 40px;
+    display: grid;
+    align-items: center;
+    border-radius: 6px 6px 0 0;
+}
+
+.table-lyo .data-header > div {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+/* ===================== DATA ITEM ===================== */
+.table-lyo .data-item {
+    font-size: 12px;
+    display: grid;
+    align-items: center;
+    border-top: 1px solid #eee;
+    min-height: 40px;
+}
+
+/* ===================== DATA CELL ===================== */
+.table-lyo .data-cell {
+    font-size: 14px;
+    color: var(--text-color);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* ===================== ACTIONS ===================== */
+/* --- Khung chứa các hành động --- */
+.table-lyo .item-actions {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0px 10px 0px 0px;
+}
+
+/* --- Thẻ a mặc định --- */
+.table-lyo .item-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--primary-color);
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.table-lyo .item-actions a:hover {
+    color: var(--accent-color);
+}
+.table-lyo .item-actions a i {
+    font-size: 20px;
+}
+
+/* --- Button mặc định (CHUA_THANH_TOAN) --- */
+.table-lyo .item-actions button {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+
+/* --- Button kiểu link --- */
+.table-lyo .item-actions > button,
+.table-lyo .item-actions form[action$="mark-unpaid"] button {
+    background: none;
+    color: var(--primary-color);
+    font-size: 20px;
+    border: none;
+    border-radius: 0;
+}
+.table-lyo .item-actions > button:hover,
+.table-lyo .item-actions form[action$="mark-unpaid"] button:hover {
+    color: var(--accent-color);
+}
+.table-lyo .item-actions > button i,
+.table-lyo .item-actions form[action$="mark-unpaid"] button i {
+    font-size: 20px;
+}

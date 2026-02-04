@@ -1,0 +1,18 @@
+Chạy tốt:
+chitietdichvu,
+datphong,
+dichvu,
+khachhang,
+kiemtraphong,
+loaiphong,
+nhanvien,
+phong,
+roles,
+sudungdichvu,
+thietbi,
+thietbiphong, * Có thể xóa tên phòng k
+users
+
+hỏng: 
+kiemtrachitiet
+hoadon, hoadonchitiet

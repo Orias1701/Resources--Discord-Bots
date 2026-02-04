@@ -1,0 +1,20 @@
+.logo-img {
+    width: 35px;
+    height: auto;   /* Giữ tỉ lệ gốc */
+    padding-top: 5px;
+}
+
+.logo-name {
+    font-size: 15px;
+    font-family: 'Overlock SC', sans-serif;
+    color: #3D2B1F;
+    margin-left: -10px;
+    padding-top: 10px;
+}
+
+.header-right {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3D2B1F;
+}

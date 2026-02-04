@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Thông Tin Dịch Vụ | Quản Lý Khách Sạn</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/main-style.css">
+    <link rel="stylesheet" href="../static/css/data-style.css">
+    <link rel="stylesheet" href="../static/css/grid-style.css">
+    <link rel="stylesheet" href="../static/css/form-style.css">
+    <link rel="stylesheet" href="../font-6-pro/css/all.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-left">
+                <h3>HỆ THỐNG QUẢN LÝ</h3>
+            </div>
+            <div class="header-right">
+                <span>USER NAME</span>
+            </div>
+        </header>
+
+        <nav class="app-sidebar">
+            <ul>
+                <li><a href="/">TRANG CHỦ</a><i class="fa-solid fa-bars" id="menu-toggle"></i></li>
+                <hr>
+                <li><strong>Quản Lý Phòng</strong></li>
+                <li><a href="/phong">Phòng</a></li>
+                <li><a href="/loaiphong">Loại Phòng</a></li>
+                <li><a href="/thietbi">Thiết Bị</a></li>
+                <li><a href="/thietbiphong">Thiết Bị Phòng</a></li>
+                <hr>
+                <li><strong>Nghiệp Vụ</strong></li>
+                <li><a href="/datphong">Đặt Phòng</a></li>
+                <li><a href="/dichvu">Dịch Vụ</a></li>
+                <li><a href="/sddv">Sử Dụng Dịch Vụ</a></li>
+                <li><a href="/chitietdichvu">Chi Tiết Dịch Vụ</a></li>
+                <li><a href="/kiemtraphong">Kiểm Tra Phòng</a></li>
+                <li><a href="/kiemtrachitiet">Chi Tiết Kiểm Tra</a></li>
+                <hr>
+                <li><strong>Thanh Toán</strong></li>
+                <li><a href="/hoadon">Hóa Đơn</a></li>
+                <li><a href="/hdct">Hóa Đơn Chi Tiết</a></li>
+                <hr>
+                <li><strong>Quản Lý Chung</strong></li>
+                <li><a href="/nhanvien">Nhân Viên</a></li>
+                <li><a href="/khachhang">Khách Hàng</a></li>
+                <li><a href="/users">Tài Khoản</a></li>
+                <li><a href="/roles">Phân Quyền</a></li>
+            </ul>
+        </nav>
+
+        <main class="app-main-content">
+            
+
+
+<div class="page-header">
+    <h2>Danh sách Chi Tiết Dịch Vụ</h2>
+    
+</div>
+
+<div id = "sw_layout">
+    <span id = "sw_table">Bảng</span>
+    <span id = "sw_card">Thẻ</span>
+</div>
+
+<div class="page-controls">
+    <div class="control-group filters">
+        <form method="get" action="/chitietdichvu">
+            <input type="text" name="keyword" placeholder="Tìm kiếm..." value=""/>
+            <input type="number" name="minSL" placeholder="SL từ" value=""/>
+            <input type="number" name="maxSL" placeholder="SL đến" value=""/>
+            <button type="submit"><i class="fa-regular fa-circle"></i></button>
+            <a href="/chitietdichvu" class="btn-secondary"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+        </form>
+    </div>
+    <div class="control-group actions">
+        <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form')" class="btn-primary"><i class="fa-solid fa-plus"></i></a>
+    </div>
+</div>
+
+<div class="data-layout">
+    <div class="data-container table-lyo">
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">8</div>
+                <div class="data-cell" data-label="Mã SDDV">SD002</div>
+                <div class="data-cell" data-label="Mã DV">DV001</div>
+                <div class="data-cell" data-label="Số lượng">2</div>
+                <div class="data-cell" data-label="Thành tiền">2.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=8')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=8" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">9</div>
+                <div class="data-cell" data-label="Mã SDDV">SD002</div>
+                <div class="data-cell" data-label="Mã DV">DV002</div>
+                <div class="data-cell" data-label="Số lượng">3</div>
+                <div class="data-cell" data-label="Thành tiền">6.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=9')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=9" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">11</div>
+                <div class="data-cell" data-label="Mã SDDV">SD003</div>
+                <div class="data-cell" data-label="Mã DV">DV003</div>
+                <div class="data-cell" data-label="Số lượng">12</div>
+                <div class="data-cell" data-label="Thành tiền">36.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=11')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=11" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">14</div>
+                <div class="data-cell" data-label="Mã SDDV">SD003</div>
+                <div class="data-cell" data-label="Mã DV">DV001</div>
+                <div class="data-cell" data-label="Số lượng">12</div>
+                <div class="data-cell" data-label="Thành tiền">12.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=14')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=14" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">15</div>
+                <div class="data-cell" data-label="Mã SDDV">SD003</div>
+                <div class="data-cell" data-label="Mã DV">DV002</div>
+                <div class="data-cell" data-label="Số lượng">1</div>
+                <div class="data-cell" data-label="Thành tiền">2.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=15')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=15" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">16</div>
+                <div class="data-cell" data-label="Mã SDDV">SD004</div>
+                <div class="data-cell" data-label="Mã DV">DV003</div>
+                <div class="data-cell" data-label="Số lượng">3</div>
+                <div class="data-cell" data-label="Thành tiền">9.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=16')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=16" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">17</div>
+                <div class="data-cell" data-label="Mã SDDV">SD004</div>
+                <div class="data-cell" data-label="Mã DV">DV002</div>
+                <div class="data-cell" data-label="Số lượng">3</div>
+                <div class="data-cell" data-label="Thành tiền">6.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=17')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=17" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">19</div>
+                <div class="data-cell" data-label="Mã SDDV">SD004</div>
+                <div class="data-cell" data-label="Mã DV">DV001</div>
+                <div class="data-cell" data-label="Số lượng">2</div>
+                <div class="data-cell" data-label="Thành tiền">2.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=19')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=19" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+    </div>
+    <div class="data-container grid-lyo">
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">8</div>
+                <div class="data-cell" data-label="Mã SDDV">SD002</div>
+                <div class="data-cell" data-label="Mã DV">DV001</div>
+                <div class="data-cell" data-label="Số lượng">2</div>
+                <div class="data-cell" data-label="Thành tiền">2.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=8')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=8" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">9</div>
+                <div class="data-cell" data-label="Mã SDDV">SD002</div>
+                <div class="data-cell" data-label="Mã DV">DV002</div>
+                <div class="data-cell" data-label="Số lượng">3</div>
+                <div class="data-cell" data-label="Thành tiền">6.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=9')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=9" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">11</div>
+                <div class="data-cell" data-label="Mã SDDV">SD003</div>
+                <div class="data-cell" data-label="Mã DV">DV003</div>
+                <div class="data-cell" data-label="Số lượng">12</div>
+                <div class="data-cell" data-label="Thành tiền">36.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=11')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=11" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">14</div>
+                <div class="data-cell" data-label="Mã SDDV">SD003</div>
+                <div class="data-cell" data-label="Mã DV">DV001</div>
+                <div class="data-cell" data-label="Số lượng">12</div>
+                <div class="data-cell" data-label="Thành tiền">12.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=14')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=14" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">15</div>
+                <div class="data-cell" data-label="Mã SDDV">SD003</div>
+                <div class="data-cell" data-label="Mã DV">DV002</div>
+                <div class="data-cell" data-label="Số lượng">1</div>
+                <div class="data-cell" data-label="Thành tiền">2.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=15')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=15" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">16</div>
+                <div class="data-cell" data-label="Mã SDDV">SD004</div>
+                <div class="data-cell" data-label="Mã DV">DV003</div>
+                <div class="data-cell" data-label="Số lượng">3</div>
+                <div class="data-cell" data-label="Thành tiền">9.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=16')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=16" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">17</div>
+                <div class="data-cell" data-label="Mã SDDV">SD004</div>
+                <div class="data-cell" data-label="Mã DV">DV002</div>
+                <div class="data-cell" data-label="Số lượng">3</div>
+                <div class="data-cell" data-label="Thành tiền">6.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=17')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=17" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+            <div class="data-item">
+                <div class="data-cell" data-label="ID">19</div>
+                <div class="data-cell" data-label="Mã SDDV">SD004</div>
+                <div class="data-cell" data-label="Mã DV">DV001</div>
+                <div class="data-cell" data-label="Số lượng">2</div>
+                <div class="data-cell" data-label="Thành tiền">2.00</div>
+                <div class="item-actions">
+                    <a href="javascript:void(0)" onclick="loadForm('/chitietdichvu/form?id=19')"><i class="fa-sharp-duotone fa-solid fa-pen-to-square"></i></a>
+                    <a href="/chitietdichvu/delete?id=19" onclick="return confirm('Bạn có muốn xóa?');"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        </main>
+
+        <footer class="app-footer"></footer>
+    </div>
+
+    <div id="formOverlay">
+        <div id="formContainer">
+            <span class="close-btn" onclick="closeForm()"><i class="fa-solid fa-xmark"></i></span>
+            <div id="formContent">Đang tải...</div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../static/js/main-script.js"></script>
+    <script src="../static/js/table.js"></script>
+    <script src="../static/js/grid.js"></script>
+    <script src="../static/js/form.js"></script>
+    <script>
+
+    </script>
+</body>
+</html>
